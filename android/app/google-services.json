@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "635192899859",
+    "project_id": "fcmpush-e1027",
+    "storage_bucket": "fcmpush-e1027.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635192899859:android:a4476b4ee3136e0e8582e6",
+        "android_client_info": {
+          "package_name": "com.chenliee.push.untitled1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635192899859-jgei8ka5jis3aqj23l8k077vkivc395n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrG-GvnJZc0AE95oZnLx6qLVzde2ZrgHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635192899859-jgei8ka5jis3aqj23l8k077vkivc395n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635192899859:android:87a17cfa56321e9f8582e6",
+        "android_client_info": {
+          "package_name": "com.exmaple.testpush"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635192899859-jgei8ka5jis3aqj23l8k077vkivc395n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrG-GvnJZc0AE95oZnLx6qLVzde2ZrgHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635192899859-jgei8ka5jis3aqj23l8k077vkivc395n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

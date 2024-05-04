@@ -1,0 +1,130 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+def keystoreAlias = localProperties.getProperty('keystore.alias')
+if (keystoreAlias == null) {
+    keystoreAlias = 'pushTest'///'member'
+}
+
+def keystorePassword = localProperties.getProperty('keystore.password')
+if (keystorePassword == null) {
+    keystorePassword = '123456'//'123456'
+}
+
+def keystoreFile = localProperties.getProperty('keystore.file')
+if (keystoreFile == null) {
+    keystoreFile = 'push.keystore'//'uat.keystore'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    compileSdkVersion 34
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.exmaple.testpush"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
+        minSdkVersion 26
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        flavorDimensions "version"
+        ndk {
+            /// 选择要添加的对应.so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'mips', 'mips64', 'arm64-v8a'
+        }
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreAlias
+            keyPassword keystorePassword
+            storeFile file(keystoreFile)
+            storePassword keystorePassword
+        }
+
+        debug {
+        }
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        fcmPush {
+            dimension "version"
+            apply plugin: 'com.google.gms.google-services'
+        }
+        hmsPush {
+            dimension "version"
+            apply plugin: 'com.huawei.agconnect'
+        }
+        tpnsPush {
+            dimension "version"
+            manifestPlaceholders = [
+                XG_ACCESS_ID : "1530003743",
+                XG_ACCESS_KEY : "AUJXKDTOY7Y2",
+//                XG_ACCESS_ID : "1530003497",
+//                XG_ACCESS_KEY : "A38OOBZR23S1",
+            ]
+        }
+    }
+
+    //namespace 'com.macauscholar.app.uat'
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compileOnly files("$flutterRoot/bin/cache/artifacts/engine/android-arm/flutter.jar")
+    compileOnly 'androidx.annotation:annotation:1.5.0'
+}
