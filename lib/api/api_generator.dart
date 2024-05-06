@@ -171,7 +171,7 @@ class SimpleVisitor extends SimpleElementVisitor {
       funcInfo['contentType'] = reader.peek('contentType')?.stringValue;
     }
 
-    /// 获取此函数需要的引入的包
+/*    /// 获取此函数需要的引入的包
     /// 返回值的包
     ApiGenerator.addImport(
         _buildStep, returnType.element!.librarySource!.fullName);
@@ -183,7 +183,7 @@ class SimpleVisitor extends SimpleElementVisitor {
         ApiGenerator.addImport(
             _buildStep, type.element!.librarySource!.fullName);
       }
-    }
+    }*/
     functions.add(funcInfo);
   }
 }

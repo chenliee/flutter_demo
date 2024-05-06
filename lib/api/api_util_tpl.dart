@@ -18,6 +18,7 @@ class {{fileName}} {
         ..removeWhere((key, value) => value == null);
         {{/hasData}}
         
+        {{#isList}}
         List<{{className}}> list = [];
         List<dynamic> jsonLists =
           await {{{dio}}}.getInstance().{{requestName}}(
@@ -28,6 +29,17 @@ class {{fileName}} {
           list.add({{className}}.fromJson(item));
         }
         return list;
+        {{/isList}}
+        {{^isList}}
+        {{className}}? item;
+        Map<String, dynamic> res =
+          await {{{dio}}}.getInstance().{{requestName}}(
+            url: "{{{url}}}", 
+            params: params, 
+            {{#hasData}}data: data,{{/hasData}});
+        item = {{className}}.fromJson(res);
+        return res;
+        {{/isList}}
       } catch (e) {
         Debug.printMsg(e, StackTrace.current);
         rethrow;
@@ -35,6 +47,5 @@ class {{fileName}} {
     } 
     {{/functions}}
 }
-
 """;
 }
