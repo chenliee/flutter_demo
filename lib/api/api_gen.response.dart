@@ -29,11 +29,9 @@ class TeacherResponse {
         url: "/course/api/teacher",
         params: params,
       );
-
       for (var item in jsonLists) {
         list.add(TeacherItem.fromJson(item));
       }
-
       return list;
     } catch (e) {
       Debug.printMsg(e, StackTrace.current);

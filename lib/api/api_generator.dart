@@ -130,6 +130,7 @@ class SimpleVisitor extends SimpleElementVisitor {
     funcInfo['requestName'] = requestName;
     funcInfo["className"] = reader.peek('target')?.stringValue;
     funcInfo["dio"] = reader.peek('dio')?.stringValue;
+    funcInfo["isList"] = reader.peek('isList')?.boolValue;
     var params = reader.peek('params');
     funcInfo["hasParams"] = params != null;
 
