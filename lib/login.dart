@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:untitled1/router_observer.dart';
+import 'package:service_package/utils/custom_navigator_observer.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

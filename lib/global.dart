@@ -1,11 +1,13 @@
 import 'package:amap_map_fluttify/amap_map_fluttify.dart';
+import 'package:payment/flutter_payment.dart';
+// import 'package:fluwx/fluwx.dart';
 import 'package:push/flutter_notify.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:service_package/service_package.dart';
-import 'package:untitled1/router_observer.dart';
 
 class Global {
   static BehaviorSubject<LatLng?> pos = BehaviorSubject.seeded(null);
+  // static Fluwx fluwx = Fluwx();
 
   static Future init({required String pushType}) async {
     // await enableFluttifyLog(false);
@@ -20,10 +22,13 @@ class Global {
     print(Env.envConfig.appTitle);
     print(EnvName.envKey);
     print(const String.fromEnvironment(EnvName.envKey));
-    /* Payment.setupMPay(env: MPayEnvType.uat);
+    Payment.setupMPay(env: MPayEnvType.uat);
     Payment.setupWeChat(
-        appId: 'wxd906c488fea94d78',
-        universalLink: 'https://www.macauscholar.com');*/
+        appId: 'wx927d1ca946e5bd72',
+        universalLink: 'https://www.macauscholar.com/app/');
+    // fluwx.registerApi(
+    //     appId: 'wx927d1ca946e5bd72',
+    //     universalLink: 'https://www.macauscholar.com/app/');
     ServiceGlobal.initDistributor(mid: "scholar", pid: "order");
     ServiceGlobal.initToken(
         uid: '1',

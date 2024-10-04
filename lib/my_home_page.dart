@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:amap_map_fluttify/amap_map_fluttify.dart' as a;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+//import 'package:fluwx/fluwx.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 // import 'package:payment/flutter_payment.dart';
@@ -25,7 +26,7 @@ import 'package:pointycastle/src/platform_check/platform_check.dart' as ab;
 import 'package:push/flutter_notify.dart';
 import 'package:service_package/service_package.dart';
 import 'package:untitled1/pay/third.dart';
-import 'package:untitled1/router_observer.dart';
+import 'package:untitled1/send_auth.dart';
 import 'package:untitled1/widget/cheetah_button.dart';
 import 'package:untitled1/widget/map/map.dart';
 import 'package:untitled1/widget/upload.dart';
@@ -173,6 +174,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 print(res);
                 print(data);
                 print(rsaVerify(public, data, res));
+              }),
+              CommonButton('分享微信', () {
+                // Global.fluwx.share(WeChatShareWebPageModel(
+                //   "sd",
+                //   thumbnail: WeChatImage.asset(''),
+                // ));
+              }),
+              CommonButton('微信登录', () {
+                Get.to(const SendAuthPage());
               }),
             ],
           ),

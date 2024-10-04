@@ -41,18 +41,19 @@ dependencies:
   flutter_inappwebview: ^5.7.2+3
   qr_flutter: ^4.0.0
   service_package:
-    path: ../service1/service_package
+    path: ../service/service_package
   push:
-    path: ../service1/notify
+    path: ../service/notify
   rating:
-    path: ../service1/rating
-#  payment:
-#    path: ../payment
-  amap_map_fluttify: ^2.0.2
+    path: ../service/rating
+  payment:
+    path: ../payment
+  amap_map_fluttify:
+    path: ../amap_map_fluttify
   geolocator: ^9.0.2
   easy_refresh: ^3.0.4+4
   rxdart: ^0.27.3
-  flutter_svg: ^1.1.0
+  flutter_svg: ^2.0.9
   collection: ^1.16.0
   lpinyin: ^2.0.3
   url_launcher: ^6.0.20

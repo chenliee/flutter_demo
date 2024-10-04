@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:service_package/utils/custom_navigator_observer.dart';
 import 'package:untitled1/pay/third.dart';
-import 'package:untitled1/router_observer.dart';
 
 import '../global.dart';
 import '../my_home_page.dart';
